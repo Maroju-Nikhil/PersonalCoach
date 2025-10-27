@@ -5,6 +5,7 @@ import requests
 from datetime import datetime
 import time
 import random
+import os
 
 # =========================================================
 # CONFIGURATION
