@@ -78,23 +78,28 @@ def query_model(prompt, persona="Friendly"):
 
 # ---- PWA Setup ----
 def serve_pwa_files():
-    # Inject manifest.json
-    with open("manifest.json") as f:
-        manifest = f.read()
+    # Path to static files
+    manifest_path = os.path.join("static", "manifest.json")
+    service_worker_path = os.path.join("static", "service-worker.js")
+
+    # Inject manifest + service worker
+    if os.path.exists(manifest_path):
         st.markdown(
             f"""
-            <link rel="manifest" href="manifest.json">
+            <link rel="manifest" href="/static/manifest.json">
             <meta name="theme-color" content="#000000">
             <script>
                 if ("serviceWorker" in navigator) {{
                     window.addEventListener("load", function() {{
-                        navigator.serviceWorker.register("service_worker.js");
+                        navigator.serviceWorker.register("/static/service-worker.js");
                     }});
                 }}
             </script>
             """,
             unsafe_allow_html=True
         )
+    else:
+        st.warning("⚠️ manifest.json not found in static folder.")
 
 
 serve_pwa_files()
