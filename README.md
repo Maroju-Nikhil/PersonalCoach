@@ -162,3 +162,7 @@ simple, sleek, and private.
 Contributions and improvements are always welcome! 🚀
 
 ---
+
+
+# Deployed link (Although this will not work since model will not get deployed there in streamlit): https://personal-coach-of-nikhil.streamlit.app/
+
